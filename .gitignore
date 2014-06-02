@@ -1,1 +1,3 @@
+# Ignore backup file
 *.bak
+*~
