@@ -1,5 +1,7 @@
 #lang racket
 
+(provide prime?)
+
 (define (smallest-division n)
   (find-division n 2))
 
@@ -13,6 +15,9 @@
 
 (define (square n)
   (* n n))
+
+(define (prime? n)
+  (= (smallest-division n) n))
 
 ; exercise
 
