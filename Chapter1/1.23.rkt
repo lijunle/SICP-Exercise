@@ -59,3 +59,4 @@
 (search-for-primes 1000000000001 3) ; 1e12
 
 ; the ratio with exercise 1.22 is between 1.3 to 1.8
+; the IF statement if NEXT procedure needs extra cost
