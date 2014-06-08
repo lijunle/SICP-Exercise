@@ -1,6 +1,6 @@
 #lang racket
 
-; copied from exercise 1.21
+; inspired from exercise 1.21
 
 (define (prime? n)
   (= (smallest-division n) n))
@@ -11,7 +11,7 @@
 (define (find-division n test-division)
   (cond ((divides? test-division n) test-division)
         ((> (square test-division) n) n)
-        (else (find-division n (+ 1 test-division)))))
+        (else (find-division n (next test-division)))))
 
 (define (divides? a b)
   (= (remainder b a) 0))
@@ -19,7 +19,12 @@
 (define (square n)
   (* n n))
 
-; procedure for this exercise
+(define (next n)
+  (if (= 2 n)
+      3
+      (+ 2 n)))
+
+; inspired from exercise 1.22
 
 (define (timed-prime-test n)
   (start-prime-test n (current-inexact-milliseconds)))
@@ -41,18 +46,16 @@
         ((timed-prime-test odd-number) (search-for-primes (+ 2 odd-number) (- count 1)))
         (else (search-for-primes (+ 2 odd-number) count))))
 
-; exercises, these numbers are too small to get 1ms
+; exercises on 1.22
 
 (search-for-primes 1001 3)
 (search-for-primes 10001 3)
 (search-for-primes 100001 3)
 (search-for-primes 1000001 3)
 
-; make the numbers bigger
-
 (search-for-primes 1000000001 3) ; 1e9
 (search-for-primes 10000000001 3) ; 1e10
 (search-for-primes 100000000001 3) ; 1e11
 (search-for-primes 1000000000001 3) ; 1e12
 
-; Basically, the increase satisfies sqrt(10) speed
+; the ratio with exercise 1.22 is between 1.3 to 1.8
